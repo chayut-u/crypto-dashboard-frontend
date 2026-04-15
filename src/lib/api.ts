@@ -31,6 +31,10 @@ export async function getTransactions(): Promise<Transaction[]> {
   return request<Transaction[]>('/transactions');
 }
 
+export async function getInterestingTransactions(): Promise<Transaction[]> {
+  return request<Transaction[]>('/transactions/interesting');
+}
+
 export async function getLatestAnalysis(): Promise<Analysis | null> {
   const summary = await getSummary();
   return summary.latest_analysis;

@@ -1,12 +1,20 @@
 export interface Transaction {
   id: number;
   source: string;
+  category?: string | null;
   external_id?: string;
   tx_type?: string;
-  amount: number;
+  amount: number | null;
   symbol: string;
   wallet_address: string;
+  account_index?: string | null;
   exchange_name?: string | null;
+  direction?: string | null;
+  unit_price?: number | null;
+  quote_amount?: number | null;
+  event_timestamp?: string | null;
+  is_interesting?: boolean;
+  interesting_reason?: string | null;
   description?: string;
   created_at: string;
 }
@@ -37,7 +45,10 @@ export interface SummaryResponse {
   stats: {
     recent_transactions: number;
     recent_alerts: number;
+    interesting_movements: number;
+    tracked_wallets: number;
   };
   latest_analysis: Analysis | null;
   latest_transactions: Transaction[];
+  interesting_transactions: Transaction[];
 }
